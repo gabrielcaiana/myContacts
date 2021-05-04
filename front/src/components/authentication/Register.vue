@@ -40,22 +40,26 @@
         @blur="$v.password.$touch()"
       ></v-text-field>
 
-      <v-btn :disabled="$v.$invalid" @click="submit"> Confirmar cadastro </v-btn>
-      <v-btn outlined class="ml-2 primary--text" @click="goLogin"> Voltar </v-btn>
+      <v-btn :disabled="$v.$invalid" @click="submit">
+        Confirmar cadastro
+      </v-btn>
+      <v-btn outlined class="ml-2 primary--text" @click="goLogin">
+        Voltar
+      </v-btn>
     </form>
   </div>
 </template>
 
 <script>
 import { validationMixin } from 'vuelidate';
-import { required, maxLength, email } from 'vuelidate/lib/validators';
+import { required, maxLength, email, minLength } from 'vuelidate/lib/validators';
 export default {
   mixins: [validationMixin],
   validations: {
     name: { required, maxLength: maxLength(30) },
     select: { required },
     email: { required, email },
-    password: { required },
+    password: { required, minLength: minLength(6) },
   },
 
   data: () => ({
@@ -99,7 +103,14 @@ export default {
   methods: {
     submit() {
       this.$v.$touch();
-      console.log('foi')
+      let form = {
+        name: this.name,
+        gender: this.select,
+        email: this.email,
+        password: this.password,
+      };
+
+      console.log(form);
     },
 
     goLogin() {
