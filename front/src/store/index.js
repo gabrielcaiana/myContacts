@@ -1,14 +1,14 @@
-import Vue from "vue";
-import Vuex from "vuex";
+import Vue from 'vue';
+import Vuex from 'vuex';
 
-import { authentication } from './modules/authentication'
-import { members } from './modules/members'
+import { authentication } from './modules/authentication';
 
 Vue.use(Vuex);
 
 const store = new Vuex.Store({
-  authentication,
-  members
+  modules: {
+    authentication,
+  },
 });
 
-export default store
+export default store;

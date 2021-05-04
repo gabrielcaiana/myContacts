@@ -1,19 +1,28 @@
 import firebase from 'firebase';
 import 'firebase/auth';
+import 'firebase/firestore';
 
 var firebaseConfig = {
-  apiKey: 'AIzaSyA4loBwRjbOGZ7kJRvQ5c3u1txrhRWpfSs',
-  authDomain: 'list-members.firebaseapp.com',
-  projectId: 'list-members',
-  storageBucket: 'list-members.appspot.com',
-  messagingSenderId: '362034244469',
-  appId: '1:362034244469:web:2ae0c96585473bc271413c',
-  measurementId: 'G-QLKPD91GKR',
+  apiKey: 'AIzaSyAqUAVYkpeAQQCQGxywK0c2k_b6gHLcvpY',
+  authDomain: 'mycontacts-2dff4.firebaseapp.com',
+  projectId: 'mycontacts-2dff4',
+  storageBucket: 'mycontacts-2dff4.appspot.com',
+  messagingSenderId: '285447675168',
+  appId: '1:285447675168:web:692676402cb5abea958b45',
+  measurementId: 'G-E1XL4Z44GJ',
 };
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
 firebase.analytics();
 
+const db = firebase.firestore();
 const auth = firebase.auth();
 
-export { auth };
+//collection references
+const userCollection = db.collection('users')
+
+export { 
+  auth,
+  userCollection,
+  db
+};

@@ -40,7 +40,7 @@
         @blur="$v.password.$touch()"
       ></v-text-field>
 
-      <v-btn :disabled="$v.$invalid" @click="submit">
+      <v-btn class="primary" :disabled="$v.$invalid" @click="submit">
         Confirmar cadastro
       </v-btn>
       <v-btn outlined class="ml-2 primary--text" @click="goLogin">
@@ -52,7 +52,12 @@
 
 <script>
 import { validationMixin } from 'vuelidate';
-import { required, maxLength, email, minLength } from 'vuelidate/lib/validators';
+import {
+  required,
+  maxLength,
+  email,
+  minLength,
+} from 'vuelidate/lib/validators';
 export default {
   mixins: [validationMixin],
   validations: {
@@ -95,7 +100,8 @@ export default {
     passwordErrors() {
       const errors = [];
       if (!this.$v.password.$dirty) return errors;
-      !this.$v.password.required && errors.push('Informe uma senha');
+      !this.$v.password.required &&
+        errors.push('A senha deve conter no mínimo 6 caracteres');
       return errors;
     },
   },
@@ -110,7 +116,7 @@ export default {
         password: this.password,
       };
 
-      console.log(form);
+      this.$store.dispatch('authentication/registerUser', form)
     },
 
     goLogin() {
