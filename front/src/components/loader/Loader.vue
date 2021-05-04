@@ -1,5 +1,5 @@
 <template>
-  <div class="text-center loader">
+  <div v-if="visible" class="text-center loader">
     <v-progress-circular
       :size="50"
       :width="7"
@@ -10,7 +10,15 @@
 </template>
 
 <script>
-export default {};
+export default {
+  props: {
+    visible: {
+      type: Boolean,
+      default: false,
+      required: true,
+    },
+  }
+};
 </script>
 
 <style lang="scss" scoped>
@@ -20,13 +28,13 @@ export default {};
 }
 
 .loader {
-    width: 100vw;
-    height: 100vh;
-    position: fixed;
-    z-index: 9;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: rgba(255, 255, 255, 0.37);
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  z-index: 9;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.37);
 }
 </style>

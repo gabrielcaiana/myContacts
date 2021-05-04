@@ -1,6 +1,6 @@
 <template>
   <v-app id="app">
-    <Loader />
+    <Loader :visible="loading" />
     <!-- <Header v-if="showHeader" /> -->
     <v-main>
       <router-view />
