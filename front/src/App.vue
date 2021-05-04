@@ -1,7 +1,6 @@
 <template>
   <v-app id="app">
     <Loader :visible="loading" />
-    <!-- <Header v-if="showHeader" /> -->
     <v-main>
       <router-view />
     </v-main>
@@ -9,17 +8,30 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex';
 export default {
-   components: {
-      //  Header: () => import('@/components/Header')
-      Loader:() => import('@/components/loader/Loader')
-   },
+  components: {
+    Loader: () => import('@/components/loader/Loader'),
+  },
+
+  computed: {
+    ...mapGetters({
+      loading: 'loader/loader',
+    }),
+  },
+
+  watch: {
+    loading: function (newValue, oldValue) {
+        console.log(newValue);
+        console.log(oldValue);
+      }
+  },
 };
 </script>
 
 <style scoped>
 #app {
-    width: 100%;
-    min-height: 100vh;
+  width: 100%;
+  min-height: 100vh;
 }
 </style>

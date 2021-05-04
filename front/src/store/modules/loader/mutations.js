@@ -1,5 +1,5 @@
 export const mutations = {
   SET_LOADER(state, payload) {
-    state.loader = payload;
+    state.isVisible = payload;
   },
 };

@@ -2,15 +2,15 @@ import { auth, userCollection } from '@/services/firebase';
 import router from '@/router';
 
 export const actions = {
-  async registerUser({ commit }, form) {
+  async registerUser({ commit, dispatch }, form) {
     try {
+      dispatch('loader/setLoader', true, {root: true})
       const { user } = await auth.createUserWithEmailAndPassword(
         form.email,
         form.password
       );
       commit('SET_USER', user);
-      console.log(user);
-
+  
       await userCollection.doc(user.uid).set({
         createdOn: new Date(),
         name: form.name,
@@ -23,11 +23,14 @@ export const actions = {
       router.push({ name: 'Home' });
     } catch (err) {
       console.log(err);
+    } finally {
+        dispatch('loader/setLoader', false, {root: true})
     }
   },
 
-  async login({ commit }, form) {
+  async login({ commit, dispatch }, form) {
     try {
+      dispatch('loader/setLoader', true, {root: true})
       const { user } = await auth.signInWithEmailAndPassword(
         form.email,
         form.password
@@ -40,6 +43,8 @@ export const actions = {
       router.push({ name: 'Home' });
     } catch (err) {
       console.log(err);
+    } finally {
+      dispatch('loader/setLoader', false, {root: true})
     }
   },
 };
