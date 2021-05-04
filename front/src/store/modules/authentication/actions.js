@@ -33,7 +33,6 @@ export const actions = {
         form.password
       );
 
-      //   const currentUser = await userCollection.where("userId", "==", user.uid).get()
       const currentUser = await userCollection.doc(user.uid).get();
       console.log(currentUser.data());
 

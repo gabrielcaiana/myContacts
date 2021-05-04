@@ -1,5 +1,6 @@
 <template>
   <v-app id="app">
+    <Loader />
     <!-- <Header v-if="showHeader" /> -->
     <v-main>
       <router-view />
@@ -11,11 +12,8 @@
 export default {
    components: {
       //  Header: () => import('@/components/Header')
+      Loader:() => import('@/components/loader/Loader')
    },
-
-   computed: {
-     
-   }
 };
 </script>
 
