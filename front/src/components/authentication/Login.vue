@@ -39,7 +39,7 @@ export default {
 
   methods: {
     submit() {
-      console.log(this.login);
+      this.$store.dispatch('authentication/login', this.login)
     },
 
     goRegister() {
