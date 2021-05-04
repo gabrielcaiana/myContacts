@@ -1,47 +1,47 @@
 <template>
   <div class="form pa-8">
     <h1 class="mb-5 primary--text">Faça seu cadastro</h1>
-    <form>
+    <form @submit.prevent="submit">
       <v-text-field
-        v-model="form.name"
+        v-model="name"
         :error-messages="nameErrors"
         :counter="30"
         label="Nome"
         required
-        @input="$v.form.name.$touch()"
-        @blur="$v.form.name.$touch()"
+        @input="$v.name.$touch()"
+        @blur="$v.name.$touch()"
       ></v-text-field>
 
       <v-select
-        v-model="form.select"
+        v-model="select"
         :items="items"
         :error-messages="genderErrors"
         label="Selecione seu genêro"
         required
-        @change="$v.form.select.$touch()"
-        @blur="$v.form.select.$touch()"
+        @change="$v.select.$touch()"
+        @blur="$v.select.$touch()"
       ></v-select>
 
       <v-text-field
-        v-model="form.email"
+        v-model="email"
         :error-messages="emailErrors"
         label="E-mail"
         required
-        @input="$v.form.email.$touch()"
-        @blur="$v.form.email.$touch()"
+        @input="$v.email.$touch()"
+        @blur="$v.email.$touch()"
       ></v-text-field>
 
       <v-text-field
-        v-model="form.password"
+        v-model="password"
         :error-messages="passwordErrors"
         label="Senha"
         required
-        @input="$v.form.password.$touch()"
-        @blur="$v.form.password.$touch()"
+        @input="$v.password.$touch()"
+        @blur="$v.password.$touch()"
       ></v-text-field>
 
-      <v-btn disabled @click="submit"> Confirmar cadastro </v-btn>
-      <v-btn class="ml-2" @click="goLogin"> Voltar </v-btn>
+      <v-btn :disabled="$v.$invalid" @click="submit"> Confirmar cadastro </v-btn>
+      <v-btn outlined class="ml-2 primary--text" @click="goLogin"> Voltar </v-btn>
     </form>
   </div>
 </template>
@@ -59,7 +59,10 @@ export default {
   },
 
   data: () => ({
-    form: { name: '', select: null, email: '', password: '' },
+    name: '',
+    select: null,
+    email: '',
+    password: '',
     items: ['Masculino', 'Feminino', 'Não Binário'],
   }),
 
@@ -67,9 +70,9 @@ export default {
     nameErrors() {
       const errors = [];
       if (!this.$v.name.$dirty) return errors;
-      !this.$v.form.name.maxLength &&
+      !this.$v.name.maxLength &&
         errors.push('O nome deve conter no máximo 30 caracteres');
-      !this.$v.form.name.required && errors.push('Informe um nome');
+      !this.$v.name.required && errors.push('Informe um nome');
       return errors;
     },
     genderErrors() {
@@ -96,7 +99,7 @@ export default {
   methods: {
     submit() {
       this.$v.$touch();
-      alert('');
+      console.log('foi')
     },
 
     goLogin() {
