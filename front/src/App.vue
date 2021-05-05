@@ -1,6 +1,11 @@
 <template>
   <v-app id="app">
     <Loader :visible="loading" />
+    <Snackbar
+      :visible="showNotification.isVisible"
+      :message="showNotification.message"
+      :color="showNotification.color"
+    />
     <v-main>
       <router-view />
     </v-main>
@@ -12,13 +17,15 @@ import { mapGetters } from 'vuex';
 export default {
   components: {
     Loader: () => import('@/components/loader/Loader'),
+    Snackbar: () => import('@/components/notification/Snackbar'),
   },
 
   computed: {
     ...mapGetters({
       loading: 'loader/loader',
+      showNotification: 'notification/$snackbar',
     }),
-  }
+  },
 };
 </script>
 

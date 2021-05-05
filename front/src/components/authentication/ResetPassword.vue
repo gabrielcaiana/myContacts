@@ -49,8 +49,14 @@ export default {
   }),
 
   methods: {
-    sendResetPassword() {
-      console.log(this.email)
+    async sendResetPassword() {
+     try {
+      await this.$store.dispatch('authentication/resetPassword', this.email)
+      this.email = ""
+      this.$emit('resetPassword', false)
+     } catch(err) {
+         this.message = err
+     }
     },
   },
 };
