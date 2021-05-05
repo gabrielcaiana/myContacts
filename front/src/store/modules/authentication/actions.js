@@ -63,4 +63,10 @@ export const actions = {
       dispatch('loader/setLoader', false, { root: true });
     }
   },
+
+  async logout({commit}) {
+    await auth.signOut();
+    commit('SET_USER', {});
+    router.push('/')
+  }
 };

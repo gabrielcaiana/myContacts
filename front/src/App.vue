@@ -6,25 +6,39 @@
       :message="showNotification.message"
       :color="showNotification.color"
     />
-    <v-main>
-      <router-view />
+
+    <Header v-if="authenticationUser" />
+    <v-main class="pa-0">
+      <transition
+        enter-active-class="animate__animated animate__fadeInRight"
+        mode="out-in"
+      >
+        <router-view />
+      </transition>
     </v-main>
   </v-app>
 </template>
 
 <script>
+import 'animate.css';
 import { mapGetters } from 'vuex';
 export default {
   components: {
     Loader: () => import('@/components/loader/Loader'),
     Snackbar: () => import('@/components/notification/Snackbar'),
+    Header: () => import('@/components/header/Header')
   },
 
   computed: {
     ...mapGetters({
       loading: 'loader/loader',
       showNotification: 'notification/$snackbar',
+      currentUser: 'authentication/user'
     }),
+
+    authenticationUser() {
+      return Object.keys(this.currentUser).length > 0
+    }
   },
 };
 </script>
