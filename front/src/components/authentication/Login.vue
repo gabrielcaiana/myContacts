@@ -13,7 +13,10 @@
         required
         @click:append="iconInputPassword.show1 = !iconInputPassword.show1"
       ></v-text-field>
-      <v-btn class="mr-4 mt-4 primary" type="submit">Entrar</v-btn>
+      <div class="d-flex align-center justify-space-between mt-4">
+        <v-btn class="mr-4 primary" type="submit">Entrar</v-btn>
+        <a @click="$emit('resetPassword', true)" class="primary--text">Esqueceu sua senha?</a>
+      </div>
     </form>
     <span
       >Ainda não tem um cadastro?
@@ -21,6 +24,8 @@
         >Faça agora mesmo</a
       ></span
     >
+
+
   </div>
 </template>
 

@@ -34,10 +34,7 @@
 
 <script>
 export default {
-  data:() => ({}),
-  async created() {
-    await this.$store.dispatch('members/listMembers')
-  }
+  data:() => ({})
 };
 </script>
 

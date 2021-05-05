@@ -10,12 +10,12 @@ export default [
   {
     path: '/login',
     name: 'Login',
-    component: () => import('@/views/Login.vue'),
+    component: () => import('@/views/public/Login.vue'),
   },
   {
     path: '/home',
     name: 'Home',
-    component: () => import('@/views/Home.vue'),
+    component: () => import('@/views/private/Home.vue'),
     meta: { 
       requiresAuth: true
     }

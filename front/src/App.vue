@@ -18,14 +18,7 @@ export default {
     ...mapGetters({
       loading: 'loader/loader',
     }),
-  },
-
-  watch: {
-    loading: function (newValue, oldValue) {
-        console.log(newValue);
-        console.log(oldValue);
-      }
-  },
+  }
 };
 </script>
 

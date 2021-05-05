@@ -24,9 +24,11 @@
             <component
               :is="currentComponent"
               @currentComponent="changeComponent($event)"
+              @resetPassword="showResetPasswordModal($event)"
             />
           </transition>
         </v-col>
+        <ResetPassword @resetPassword="showResetPasswordModal($event)" :dialog="dialog" />
       </v-row>
     </v-container>
   </div>
@@ -36,18 +38,24 @@
 import 'animate.css';
 export default {
   components: {
-    Login: () => import('../components/authentication/Login'),
-    Register: () => import('../components/authentication/Register'),
+    Login: () => import('@/components/authentication/Login'),
+    Register: () => import('@/components/authentication/Register'),
+    ResetPassword: () => import('@/components/authentication/ResetPassword')
   },
 
   data: () => ({
     currentComponent: 'Login',
+    dialog: false,
   }),
 
   methods: {
     changeComponent(component) {
       this.currentComponent = component;
     },
+
+    showResetPasswordModal(event) {
+      this.dialog = event
+    }
   },
 };
 </script>
