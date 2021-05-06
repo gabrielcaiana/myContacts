@@ -2,14 +2,13 @@ import { auth, userCollection } from '@/services/firebase';
 import router from '@/router';
 
 export const actions = {
-  async registerUser({ commit, dispatch }, form) {
+  async registerUser({dispatch }, form) {
     try {
       dispatch('loader/setLoader', true, { root: true });
       const { user } = await auth.createUserWithEmailAndPassword(
         form.email,
         form.password
       );
-      commit('SET_USER', user);
 
       await userCollection.doc(user.uid).set({
         createdOn: new Date(),
@@ -20,7 +19,7 @@ export const actions = {
         userId: user.uid,
       });
 
-      router.push({ name: 'Home' });
+      router.push({ name: 'Login' });
       dispatch('notification/showNotification', {message: 'Cadastro efetuado com sucesso!'}, {root: true})
     } catch (err) {
       console.log(err);
@@ -30,16 +29,15 @@ export const actions = {
     }
   },
 
-  async login({ commit, dispatch }, form) {
+  async login({dispatch }, form) {
     try {
       dispatch('loader/setLoader', true, { root: true });
       const { user } = await auth.signInWithEmailAndPassword(
         form.email,
         form.password
       );
-      const currentUser = await userCollection.doc(user.uid).get();
-      console.log(currentUser.data());
-      commit('SET_USER', currentUser.data());
+      dispatch('user/setCurrentUser', user, {root: true})
+      console.log(user)
       router.push({ name: 'Home' });
 
       dispatch('notification/showNotification', {message: 'Login efetuado com sucesso'}, {root: true})
@@ -64,9 +62,9 @@ export const actions = {
     }
   },
 
-  async logout({commit}) {
+  async logout({dispatch}) {
     await auth.signOut();
-    commit('SET_USER', {});
+    dispatch('user/removeCurrentUser', {} , {root: true})
     router.push('/')
   }
 };

@@ -1,10 +1,10 @@
 <template>
   <v-app id="app">
-    <Loader :visible="loading" />
+    <Loader :visible="$loading" />
     <Snackbar
-      :visible="showNotification.isVisible"
-      :message="showNotification.message"
-      :color="showNotification.color"
+      :visible="$showNotification.isVisible"
+      :message="$showNotification.message"
+      :color="$showNotification.color"
     />
 
     <Header v-if="authenticationUser" />
@@ -31,13 +31,13 @@ export default {
 
   computed: {
     ...mapGetters({
-      loading: 'loader/loader',
-      showNotification: 'notification/$snackbar',
-      currentUser: 'authentication/user'
+      $loading: 'loader/loader',
+      $showNotification: 'notification/$snackbar',
+      $currentUser: 'user/$currentUser'
     }),
 
     authenticationUser() {
-      return Object.keys(this.currentUser).length > 0
+      return Object.keys(this.$currentUser).length > 0
     }
   },
 };

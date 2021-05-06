@@ -4,9 +4,7 @@ import { getters } from './getters';
 
 export const authentication = {
   namespaced: true,
-  state: {
-    user: {},
-  },
+  state: {},
   mutations,
   actions,
   getters,
