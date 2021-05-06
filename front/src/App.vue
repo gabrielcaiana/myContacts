@@ -8,7 +8,7 @@
     />
 
     <Header v-if="authenticationUser" />
-    <v-main class="pa-0">
+    <v-main class="grey lighten-3 100vh">
       <transition
         enter-active-class="animate__animated animate__fadeInRight"
         mode="out-in"
@@ -26,26 +26,19 @@ export default {
   components: {
     Loader: () => import('@/components/loader/Loader'),
     Snackbar: () => import('@/components/notification/Snackbar'),
-    Header: () => import('@/components/header/Header')
+    Header: () => import('@/components/header/Header'),
   },
 
   computed: {
     ...mapGetters({
       $loading: 'loader/loader',
       $showNotification: 'notification/$snackbar',
-      $currentUser: 'user/$currentUser'
+      $currentUser: 'user/$currentUser',
     }),
 
     authenticationUser() {
-      return Object.keys(this.$currentUser).length > 0
-    }
+      return Object.keys(this.$currentUser).length > 0;
+    },
   },
 };
 </script>
-
-<style scoped>
-#app {
-  width: 100%;
-  min-height: 100vh;
-}
-</style>

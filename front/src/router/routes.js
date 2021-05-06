@@ -19,5 +19,13 @@ export default [
     meta: { 
       requiresAuth: true
     }
+  },
+  {
+    path: '/profile',
+    name: 'Profile',
+    component: () => import('@/views/private/Profile.vue'),
+    meta: { 
+      requiresAuth: true
+    }
   }
 ];

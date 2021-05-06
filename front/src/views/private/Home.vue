@@ -1,5 +1,4 @@
 <template>
-    <v-main class="grey lighten-3 100vh">
       <v-container>
         <v-row>
           <v-col cols="3">
@@ -29,7 +28,6 @@
           </v-col>
         </v-row>
       </v-container>
-    </v-main>
 </template>
 
 <script>
