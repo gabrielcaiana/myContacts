@@ -17,6 +17,7 @@ firebase.analytics();
 
 const db = firebase.firestore();
 const auth = firebase.auth();
+const storage = firebase.storage()
 
 //collection references
 const userCollection = db.collection('users')
@@ -24,5 +25,6 @@ const userCollection = db.collection('users')
 export { 
   auth,
   userCollection,
-  db
+  db,
+  storage
 };

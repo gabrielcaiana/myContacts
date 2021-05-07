@@ -19,7 +19,7 @@ export const actions = {
         userId: user.uid,
       });
 
-      router.push({ name: 'Login' });
+      router.push('/home');
       dispatch('notification/showNotification', {message: 'Cadastro efetuado com sucesso!'}, {root: true})
     } catch (err) {
       console.log(err);
