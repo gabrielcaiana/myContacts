@@ -3,13 +3,13 @@ import 'firebase/auth';
 import 'firebase/firestore';
 
 var firebaseConfig = {
-  apiKey: 'AIzaSyAqUAVYkpeAQQCQGxywK0c2k_b6gHLcvpY',
-  authDomain: 'mycontacts-2dff4.firebaseapp.com',
-  projectId: 'mycontacts-2dff4',
-  storageBucket: 'mycontacts-2dff4.appspot.com',
-  messagingSenderId: '285447675168',
-  appId: '1:285447675168:web:692676402cb5abea958b45',
-  measurementId: 'G-E1XL4Z44GJ',
+  apiKey: process.env.VUE_APP_API_KEY,
+  authDomain: process.env.VUE_APP_AUTH_DOMAIN,
+  projectId: process.env.VUE_APP_PROJECT_ID,
+  storageBucket: process.env.VUE_APP_STORAGE_BUCKET,
+  messagingSenderId: process.env.VUE_APP_MESSAGING_SENDER_ID,
+  appId: process.env.VUE_APP_APP_ID,
+  measurementId: process.env.MEASUREMENT_ID,
 };
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
