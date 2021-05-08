@@ -83,17 +83,23 @@ export default {
       if (avatar) {
         const split = avatar.name.split('.');
         return `${split[0]}-${new Date().getTime()}.${split[1]}`;
+      } else if (this.$currentUser.avatar) {
+        return this.$currentUser.avatar.fileName
       } else {
-        return this.$currentUser.avatar.fileName;
+        return ""
       }
     },
   },
 
   mounted() {
-    setTimeout(() => this.imagePreview = this.$currentUser.avatar.url, 1000)  
+    this.setUserAvatar()
   },
 
   methods: {
+    setUserAvatar() {
+      setTimeout(() => this.$currentUser.avatar ? this.imagePreview = this.$currentUser.avatar.url : null , 1000)  
+    },
+
     openFileDialog() {
       this.$refs.input.value = null;
       this.$refs.input.click();
@@ -113,7 +119,7 @@ export default {
         },
       };
 
-      // console.log(payload);
+      console.log(payload);
 
       this.$store.dispatch('user/updateCurrentUser', payload);
     },

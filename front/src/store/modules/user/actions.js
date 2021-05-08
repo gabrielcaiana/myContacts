@@ -22,22 +22,24 @@ export const actions = {
 
       let url = '';
 
-      if (user.avatar.object != "" ) {
+      if (user.avatar.object && user.avatar.object != "" ) {
         const snapshot = await storage
           .ref(userId)
           .child(user.avatar.fileName)
           .put(user.avatar.object);
 
         url = await snapshot.ref.getDownloadURL();
-      } else {
+      } else if (store.getters['user/$currentUser'].avatar) {
         url = store.getters['user/$currentUser'].avatar.url
       }
 
+      let avatar = {
+        url,
+        fileName: user.avatar.fileName,
+      }
+
       await userCollection.doc(userId).update({
-        avatar: {
-          url,
-          fileName: user.avatar.fileName,
-        },
+        avatar: avatar.fileName ? avatar : "",
         name: user.name,
         gender: user.gender,
       });
