@@ -84,13 +84,13 @@ export default {
         const split = avatar.name.split('.');
         return `${split[0]}-${new Date().getTime()}.${split[1]}`;
       } else {
-        return '';
+        return this.$currentUser.avatar.fileName;
       }
     },
   },
 
-  async mounted() {
-    this.imagePreview = await this.$currentUser.avatar;
+  mounted() {
+    setTimeout(() => this.imagePreview = this.$currentUser.avatar.url, 1000)  
   },
 
   methods: {
@@ -109,9 +109,11 @@ export default {
         ...this.$currentUser,
         avatar: {
           object: this.user.avatar,
-          fileName: this.fileName,
+          fileName: this.fileName
         },
       };
+
+      // console.log(payload);
 
       this.$store.dispatch('user/updateCurrentUser', payload);
     },
