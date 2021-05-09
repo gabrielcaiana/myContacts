@@ -31,8 +31,15 @@
 </template>
 
 <script>
+import apiClient from '@/services'
 export default {
-  data:() => ({})
+  data:() => ({}),
+
+  async mounted() {
+    const { data } = await apiClient.get('/results')
+
+    console.log(data)
+  }
 };
 </script>
 

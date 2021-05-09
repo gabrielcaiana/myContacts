@@ -37,7 +37,6 @@ export const actions = {
         form.password
       );
       dispatch('user/setCurrentUser', user, {root: true})
-      console.log(user)
       router.push({ name: 'Home' });
 
       dispatch('notification/showNotification', {message: 'Login efetuado com sucesso'}, {root: true})

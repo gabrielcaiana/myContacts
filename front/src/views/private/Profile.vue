@@ -119,8 +119,6 @@ export default {
         },
       };
 
-      console.log(payload);
-
       this.$store.dispatch('user/updateCurrentUser', payload);
     },
   },
