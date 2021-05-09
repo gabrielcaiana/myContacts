@@ -31,15 +31,10 @@
 </template>
 
 <script>
-import { deleteContact } from '@/services/contacts'
 export default {
   data:() => ({}),
-
-  async mounted() {
-    let id = 2
-    const { status } = await deleteContact(id)
-
-    console.log(status)
+  mounted() {
+    this.$store.dispatch('contacts/listContacts')
   }
 };
 </script>
