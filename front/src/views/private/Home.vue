@@ -31,14 +31,15 @@
 </template>
 
 <script>
-import apiClient from '@/services'
+import { deleteContact } from '@/services/contacts'
 export default {
   data:() => ({}),
 
   async mounted() {
-    const { data } = await apiClient.get('/results')
+    let id = 2
+    const { status } = await deleteContact(id)
 
-    console.log(data)
+    console.log(status)
   }
 };
 </script>
