@@ -1,7 +1,7 @@
 <template>
   <v-app-bar app color="white" flat>
     <v-container class="py-0 d-flex align-center justify-space-between">
-      <span>myContatcs</span>
+      <router-link to="/" class="logo"><b>My</b>Contacts </router-link>
       <div class="d-flex">
         <v-btn
           v-for="(link, index) in links"
@@ -36,4 +36,14 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+  .logo{
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 1.2rem;
+
+    b {
+      color: $orange;
+    }
+  }
+</style>

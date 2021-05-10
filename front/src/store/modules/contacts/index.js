@@ -6,6 +6,7 @@ export const contacts = {
   namespaced: true,
   state: {
     contacts: null,
+    contactSelected: null 
   },
   mutations,
   actions,

@@ -15,4 +15,8 @@ export const actions = {
       dispatch('loader/setLoader', false, { root: true });
     }
   },
-};
+
+  showContact({commit}, payload) {
+    commit('SET_CONTACT', payload)
+  }
+}
