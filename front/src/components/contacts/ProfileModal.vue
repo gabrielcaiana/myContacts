@@ -1,7 +1,26 @@
 <template>
   <v-row justify="center">
-    <v-dialog v-if="dialog" :value="dialog" persistent max-width="600px">
+    <v-dialog
+      fullscreen
+      transition="dialog-bottom-transition"
+      v-if="dialog"
+      :value="dialog"
+      persistent
+    >
       <v-card class="profile">
+        <v-toolbar dark color="primary">
+          <v-btn icon dark @click="$emit('close')">
+            <v-icon>mdi-close</v-icon>
+          </v-btn>
+          <v-toolbar-title
+            v-text="`${$contact.name.first} ${$contact.name.last}`"
+          ></v-toolbar-title>
+          <v-spacer></v-spacer>
+          <v-toolbar-items>
+            <v-btn dark text @click="$emit('close')"> Salvar </v-btn>
+          </v-toolbar-items>
+        </v-toolbar>
+
         <v-card-title>
           <span class="headline profile__title">Perfil do contato</span>
         </v-card-title>
@@ -46,15 +65,19 @@
 
             <h3 class="profile__subtitle">Formas de contato:</h3>
             <v-row>
-              <v-col>
+              <v-col
+                cols="6"
+                v-for="(email, index) in $contact.email"
+                :key="index"
+              >
                 <v-text-field
-                  v-for="(email, index) in $contact.email"
-                  :key="index"
                   label="Email"
                   type="email"
                   required
                   :value="email"
                 ></v-text-field>
+              </v-col>
+              <v-col cols="12">
                 <div class="d-flex align-center justify-center">
                   <v-btn text class="profile__btn-new">
                     Cadastrar novo email
@@ -135,12 +158,6 @@
             </v-row>
           </v-container>
         </v-card-text>
-
-        <v-card-actions>
-          <v-spacer></v-spacer>
-          <v-btn color="gray" text @click="$emit('close')"> Close </v-btn>
-          <v-btn color="primary" text @click="$emit('close')"> Save </v-btn>
-        </v-card-actions>
       </v-card>
     </v-dialog>
   </v-row>
