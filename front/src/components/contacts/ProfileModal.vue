@@ -1,7 +1,6 @@
 <template>
   <v-row justify="center">
     <v-dialog
-      fullscreen
       transition="dialog-bottom-transition"
       v-if="dialog"
       :value="dialog"
@@ -13,7 +12,7 @@
             <v-icon>mdi-close</v-icon>
           </v-btn>
           <v-toolbar-title>
-            {{ $contact.name.first }}
+            Perfil do contato
           </v-toolbar-title>
           <v-spacer></v-spacer>
           <v-toolbar-items>
@@ -21,9 +20,6 @@
           </v-toolbar-items>
         </v-toolbar>
 
-        <v-card-title>
-          <span class="headline profile__title">Perfil do contato</span>
-        </v-card-title>
         <v-card-text>
           <v-container>
             <form @submit.prevent="save">
@@ -167,36 +163,16 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex';
 export default {
   props: {
     dialog: { type: Boolean, required: true },
+    contact: { type: Object, required: true}
   },
 
   data: () => ({
     genderItems: ['Masculino', 'Feminino', 'Não Binário'],
-    contact: {},
   }),
 
-  computed: {
-    ...mapGetters({
-      $contact: 'contacts/$contactSelected',
-    }),
-
-    contactName() {
-      let name = `${this.$contact.name.first} ${this.$contact.name.last}`;
-      return name;
-    },
-  },
-
-  watch: {
-    dialog: function (val) {
-      if (val) {
-        this.contact = this.$contact;
-        console.log(this.contact);
-      }
-    },
-  },
   methods: {
     save() {
       this.$store.dispatch('contacts/updateContact', this.contact);

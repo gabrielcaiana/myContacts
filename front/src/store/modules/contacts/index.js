@@ -5,8 +5,7 @@ import { getters } from './getters';
 export const contacts = {
   namespaced: true,
   state: {
-    contacts: null,
-    contactSelected: null 
+    contacts: {}
   },
   mutations,
   actions,

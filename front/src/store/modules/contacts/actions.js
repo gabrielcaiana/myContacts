@@ -20,20 +20,18 @@ export const actions = {
     }
   },
 
-  showContact({ commit }, payload) {
-    commit('SET_CONTACT', payload);
-  },
-
   async updateContact({dispatch }, contact) {
     try {
       dispatch('loader/setLoader', true, { root: true });
-       await putContact(contact);
+      const { status } = await putContact(contact);
 
-       dispatch(
-        'notification/showNotification',
-        { message: 'Contato atualizado com sucesso!', success: true },
-        { root: true })
-      
+      if (status === 200) {
+        dispatch(
+          'notification/showNotification',
+          { message: 'Contato atualizado com sucesso!', success: true },
+          { root: true }
+        );
+      }
     } catch (err) {
       dispatch(
         'notification/showNotification',
