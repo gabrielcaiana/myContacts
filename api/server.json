@@ -1,99 +1,55 @@
 {
   "results": [
     {
-      "gender": "Feminino",
+      "gender": "Masculino",
       "name": {
-        "first": "Gabriela",
-        "last": "rodrigues"
+        "first": "Gabriel Caiana",
+        "last": "Guedes"
       },
-      "age": 44,
+      "age": "24",
       "email": [
-        "alejandra.rodrigues@example.com",
-        "alejandra.rodrigues@example.com",
-        "teste@gmail.com"
+        "gabrielcaianaguedes@gmail.com",
+        "gabriel@hotmail.com"
       ],
       "location": {
-        "street": "3833 rua santa catarina ",
-        "city": "umuarama",
-        "state": "santa catarina"
+        "street": "Rua João Lima da Silva",
+        "city": "São Paulo",
+        "state": "SP"
       },
       "phone": [
-        "(09) 1033-7406",
-        "(09) 7033-7406",
-        "(11) 2384-3862"
+        "(11) 2443-2453",
+        "(11) 3353-5432"
       ],
       "cell": [
-        "(54) 3190-3469",
-        "(54) 2190-3469",
-        "(11) 94873-8732"
-      ],
-      "picture": {
-        "large": "https://randomuser.me/api/portraits/women/18.jpg",
-        "medium": "https://randomuser.me/api/portraits/med/women/18.jpg",
-        "thumbnail": "https://randomuser.me/api/portraits/thumb/women/18.jp"
-      },
-      "id": 1
-    },
-    {
-      "gender": "Não Binário",
-      "name": {
-        "first": "Ana",
-        "last": "rodrigues"
-      },
-      "age": 44,
-      "email": [
-        "alejandra.rodrigues@example.com",
-        "alejandra.rodrigues@example.com"
-      ],
-      "location": {
-        "street": "3833 rua santa catarina ",
-        "city": "umuarama",
-        "state": "santa catarina"
-      },
-      "phone": [
-        "(09) 1033-7406",
-        "(09) 7033-7406"
-      ],
-      "cell": [
-        "(54) 3190-3469",
+        "(11) 94987-5163",
         "(54) 2190-3469"
       ],
-      "picture": {
-        "large": "https://randomuser.me/api/portraits/women/18.jpg",
-        "medium": "https://randomuser.me/api/portraits/med/women/18.jpg",
-        "thumbnail": "https://randomuser.me/api/portraits/thumb/women/18.jpg"
-      },
       "id": 2
     },
     {
-      "gender": "Não Binário",
+      "gender": "Masculino",
       "name": {
-        "first": "Marina",
-        "last": "Silva"
+        "first": "dpgih",
+        "last": "oihoih"
       },
-      "age": 20,
+      "age": "20399",
       "email": [
-        "alejandra.rodrigues@example.com",
+        "alejandra.rodrigues@example.comhh",
         "alejandra.rodrigues@example.com"
       ],
       "location": {
-        "street": "3833 rua santa catarina ",
+        "street": "3833 rua santa catarina ihophoi",
         "city": "umuarama",
         "state": "santa catarina"
       },
       "phone": [
-        "(09) 1033-7406",
+        "(09) 1033-7406h",
         "(09) 7033-7406"
       ],
       "cell": [
         "(54) 3190-3469",
         "(54) 2190-3469"
       ],
-      "picture": {
-        "large": "https://randomuser.me/api/portraits/women/18.jpg",
-        "medium": "https://randomuser.me/api/portraits/med/women/18.jpg",
-        "thumbnail": "https://randomuser.me/api/portraits/thumb/women/18.jpg"
-      },
       "id": 3
     },
     {
@@ -120,11 +76,6 @@
         "(54) 3190-3469",
         "(54) 2190-3469"
       ],
-      "picture": {
-        "large": "https://randomuser.me/api/portraits/men/18.jpg",
-        "medium": "https://randomuser.me/api/portraits/med/men/18.jpg",
-        "thumbnail": "https://randomuser.me/api/portraits/thumb/men/18.jpg"
-      },
       "id": 5
     },
     {
@@ -151,11 +102,6 @@
         "(54) 3190-3469",
         "(54) 2190-3469"
       ],
-      "picture": {
-        "large": "https://randomuser.me/api/portraits/men/17.jpg",
-        "medium": "https://randomuser.me/api/portraits/med/men/17.jpg",
-        "thumbnail": "https://randomuser.me/api/portraits/thumb/men/17.jpg"
-      },
       "id": 6
     }
   ]

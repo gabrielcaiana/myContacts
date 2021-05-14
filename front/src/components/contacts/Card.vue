@@ -1,6 +1,5 @@
 <template>
   <v-card class="card d-flex flex-column align-center justify-center">
-    <img class="card__avatar" :src="contact.picture.medium" :alt="contact.name.first" />
     <h3 class="card__name">{{ fullName }}</h3>
     <span class="card__email">{{ contact.email[0] }}</span>
     <v-btn class="card_button" outlined @click="showProfile">Visualizar perfil</v-btn>
@@ -46,15 +45,10 @@ export default {
 <style lang="scss" scoped>
 .card {
   width: 100%;
-  height: 250px;
+  height: 100%;
   border: 1px solid $gray-100;
   padding: 1rem;
-
-  &__avatar {
-    border-radius: 50% !important;
-    border: 2px solid var(--v-primary-base);
-    padding: 0.5rem;
-  }
+  box-sizing: border-box;
 
   &__name {
     color: $gray-800;
