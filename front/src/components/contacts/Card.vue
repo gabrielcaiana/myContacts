@@ -60,7 +60,7 @@ export default {
   }
 
   &_button {
-    background: $orange;
+    background: var(--v-primary-base);
     color: $white;
     margin: 1rem 0;
   }

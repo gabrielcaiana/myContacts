@@ -7,14 +7,12 @@
     >
       <v-card class="profile">
         <v-toolbar dark color="primary">
-          <v-btn icon dark @click="$emit('close')">
-            <v-icon>mdi-close</v-icon>
-          </v-btn>
-          <v-toolbar-title> Perfil do contato </v-toolbar-title>
-          <v-spacer></v-spacer>
-          <v-toolbar-items>
-            <v-btn dark text @click="save"> Salvar </v-btn>
-          </v-toolbar-items>
+          <div class="profile__header">
+            <v-toolbar-title> Perfil do contato </v-toolbar-title>
+            <v-btn icon dark @click="$emit('close')">
+              <v-icon>mdi-close</v-icon>
+            </v-btn>
+          </div>
         </v-toolbar>
 
         <v-card-text>
@@ -153,18 +151,27 @@
               </v-row>
               <v-row>
                 <v-col cols="12" class="d-flex justify-end">
-                  <v-btn outlined color="error" depressed @click="destroy">
+                  <v-btn
+                    outlined
+                    color="error"
+                    class="mr-2"
+                    depressed
+                    @click="destroy"
+                  >
                     Deletar
                   </v-btn>
-
-                  <destroyConfirm
-                    title="Confirmar"
-                    description="Ao excluir todos os dados do contato serão perdidos, deseja prosseguir?"
-                    color="error"
-                    :dialog="destroyDialog"
-                    @close="destroy($event)"
-                  />
+                  <v-btn colored color="primary" depressed @click="save">
+                    Salvar
+                  </v-btn>
                 </v-col>
+
+                <destroyConfirm
+                  title="Confirmar"
+                  description="Ao excluir todos os dados do contato serão perdidos, deseja prosseguir?"
+                  color="error"
+                  :dialog="destroyDialog"
+                  @close="destroy($event)"
+                />
               </v-row>
             </form>
           </v-container>
@@ -192,6 +199,7 @@ export default {
   methods: {
     save() {
       this.$store.dispatch('contacts/updateContact', this.contact);
+      this.$emit('close');
     },
 
     destroy(event) {
@@ -209,6 +217,14 @@ export default {
 <style lang="scss" scoped>
 .profile {
   color: var(--v-primary-base);
+
+  &__header {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
   &__subtitle {
     padding: 1rem 0;
     color: $gray-500;
@@ -218,10 +234,5 @@ export default {
     color: var(--v-primary-base);
     text-align: center;
   }
-}
-
-.btn-destroy {
-  color: #fff;
-  background-color: #f00;
 }
 </style>
