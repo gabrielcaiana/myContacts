@@ -4,16 +4,13 @@
       transition="dialog-bottom-transition"
       v-if="dialog"
       :value="dialog"
-      persistent
     >
       <v-card class="profile">
         <v-toolbar dark color="primary">
           <v-btn icon dark @click="$emit('close')">
             <v-icon>mdi-close</v-icon>
           </v-btn>
-          <v-toolbar-title>
-            Perfil do contato
-          </v-toolbar-title>
+          <v-toolbar-title> Perfil do contato </v-toolbar-title>
           <v-spacer></v-spacer>
           <v-toolbar-items>
             <v-btn dark text @click="save"> Salvar </v-btn>
@@ -154,6 +151,21 @@
                   ></v-text-field>
                 </v-col>
               </v-row>
+              <v-row>
+                <v-col cols="12" class="d-flex justify-end">
+                  <v-btn outlined color="error" depressed @click="destroy">
+                    Deletar
+                  </v-btn>
+
+                  <destroyConfirm
+                    title="Confirmar"
+                    description="Ao excluir todos os dados do contato serão perdidos, deseja prosseguir?"
+                    color="error"
+                    :dialog="destroyDialog"
+                    @close="destroy($event)"
+                  />
+                </v-col>
+              </v-row>
             </form>
           </v-container>
         </v-card-text>
@@ -164,18 +176,31 @@
 
 <script>
 export default {
+  components: {
+    destroyConfirm: () => import('../dialogs/DialogConfirm'),
+  },
   props: {
     dialog: { type: Boolean, required: true },
-    contact: { type: Object, required: true}
+    contact: { type: Object, required: true },
   },
 
   data: () => ({
     genderItems: ['Masculino', 'Feminino', 'Não Binário'],
+    destroyDialog: false,
   }),
 
   methods: {
     save() {
       this.$store.dispatch('contacts/updateContact', this.contact);
+    },
+
+    destroy(event) {
+      this.destroyDialog = !this.destroyDialog;
+      if (event.confirm) {
+        this.$store.dispatch('contacts/destroyContact', this.contact.id);
+        this.$emit('close');
+        this.$store.dispatch('contacts/listContacts');
+      }
     },
   },
 };
@@ -193,5 +218,10 @@ export default {
     color: var(--v-primary-base);
     text-align: center;
   }
+}
+
+.btn-destroy {
+  color: #fff;
+  background-color: #f00;
 }
 </style>
