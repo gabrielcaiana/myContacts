@@ -9,13 +9,21 @@
               Total: <span class="primary--text">{{ totalContacts }}</span>
             </p>
           </div>
-            <div class="cards">
-              <Card
-                v-for="contact in $contacts"
-                :key="contact.id"
-                :contact="contact"
-              />
-            </div>
+          <div class="cards">
+            <Card
+              v-for="contact in $contacts"
+              :key="contact.id"
+              :contact="contact"
+            />
+          </div>
+
+          <v-fab-transition>
+            <v-btn color="primary" dark fixed bottom right fab @click="showModal = !showModal">
+              <v-icon>mdi-plus</v-icon>
+            </v-btn>
+          </v-fab-transition>
+
+          <RegisterContact @close="closeModal" :dialog="showModal" />
         </v-sheet>
       </v-col>
     </v-row>
@@ -25,12 +33,14 @@
 <script>
 import { mapGetters } from 'vuex';
 export default {
-  data: () => ({
-  }),
-
   components: {
     Card: () => import('@/components/contacts/Card'),
+    RegisterContact: () => import('@/components/contacts/RegisterContact.vue'),
   },
+
+  data: () => ({
+    showModal: false
+  }),
 
   computed: {
     ...mapGetters({
@@ -45,6 +55,12 @@ export default {
   mounted() {
     this.$store.dispatch('contacts/listContacts');
   },
+
+  methods: {
+    closeModal() {
+      this.showModal = !this.showModal
+    }
+  }
 };
 </script>
 

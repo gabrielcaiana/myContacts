@@ -1,6 +1,7 @@
 import {
   getContacts,
   getContact,
+  postContact,
   putContact,
   destroyContact,
 } from '@/services/contacts';
@@ -18,6 +19,30 @@ export const actions = {
       dispatch(
         'notification/showNotification',
         { message: 'Falha ao carregar a lista de contatos', success: false },
+        { root: true }
+      );
+    } finally {
+      dispatch('loader/setLoader', false, { root: true });
+    }
+  },
+
+  async registerContact({dispatch }, contact) {
+    try {
+      dispatch('loader/setLoader', true, { root: true });
+
+      const { status } = await postContact(contact);
+
+      if (status === 201) {
+        dispatch(
+          'notification/showNotification',
+          { message: 'Contato cadastrado com sucesso!', success: true },
+          { root: true }
+        );
+      }
+    } catch (err) {
+      dispatch(
+        'notification/showNotification',
+        { message: 'Falha ao cadastrar o contato', success: false },
         { root: true }
       );
     } finally {
