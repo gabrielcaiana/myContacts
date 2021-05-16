@@ -272,18 +272,14 @@ export default {
     },
 
     save() {
-      const emailFilter = this.findEnptyItems(this.contact.email)
-      const phoneFilter = this.findEnptyItems(this.contact.phone)
-      const cellFilter = this.findEnptyItems(this.contact.cell)
-
       let params = {
         gender: this.contact.gender,
         name: this.contact.name,
         age: this.contact.age,
-        email: emailFilter,
+        email: this.findEnptyItems(this.contact.email),
         location: this.contact.location,
-        phone: phoneFilter,
-        cell: cellFilter,
+        phone: this.findEnptyItems(this.contact.phone),
+        cell: this.findEnptyItems(this.contact.cell),
         id: this.contact.id,
       };
 
