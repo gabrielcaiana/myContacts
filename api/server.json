@@ -9,7 +9,9 @@
       "age": "24",
       "email": [
         "gabrielcaianaguedes@gmail.com",
-        "gabriel@hotmail.com"
+        "gabriel@hotmail.com",
+        "gabrielcaianaguedes@gmail.com",
+        "gisely@gmail.com"
       ],
       "location": {
         "street": "Rua João Lima da Silva",
@@ -22,7 +24,9 @@
       ],
       "cell": [
         "(11) 94987-5163",
-        "(54) 2190-3469"
+        "(54) 2190-3469",
+        "ippvodpojpojpojpo",
+        "r9r72309-7-907"
       ],
       "id": 2
     },
@@ -56,68 +60,6 @@
         "thumbnail": "https://randomuser.me/api/portraits/thumb/men/17.jpg"
       },
       "id": 3
-    },
-    {
-      "gender": "Masculino",
-      "name": {
-        "first": "Jose",
-        "last": "Pereira"
-      },
-      "age": 20,
-      "email": [
-        "alejandra.rodrigues@example.com",
-        "alejandra.rodrigues@example.com"
-      ],
-      "location": {
-        "street": "3833 rua santa catarina ",
-        "city": "umuarama",
-        "state": "santa catarina"
-      },
-      "phone": [
-        "(09) 1033-7406",
-        "(09) 7033-7406"
-      ],
-      "cell": [
-        "(54) 3190-3469",
-        "(54) 2190-3469"
-      ],
-      "picture": {
-        "large": "https://randomuser.me/api/portraits/men/17.jpg",
-        "medium": "https://randomuser.me/api/portraits/med/men/17.jpg",
-        "thumbnail": "https://randomuser.me/api/portraits/thumb/men/17.jpg"
-      },
-      "id": 4
-    },
-    {
-      "gender": "Masculino",
-      "name": {
-        "first": "Manuel",
-        "last": "Silva"
-      },
-      "age": "23",
-      "email": [
-        "alejandra.rodrigues@example.com",
-        "alejandra.rodrigues@example.com"
-      ],
-      "location": {
-        "street": "3833 rua santa catarina ",
-        "city": "umuarama",
-        "state": "santa catarina"
-      },
-      "phone": [
-        "(09) 1033-7406",
-        "(09) 7033-7406"
-      ],
-      "cell": [
-        "(54) 3190-3469",
-        "(54) 2190-3469"
-      ],
-      "picture": {
-        "large": "https://randomuser.me/api/portraits/men/17.jpg",
-        "medium": "https://randomuser.me/api/portraits/med/men/17.jpg",
-        "thumbnail": "https://randomuser.me/api/portraits/thumb/men/17.jpg"
-      },
-      "id": 5
     }
   ]
 }

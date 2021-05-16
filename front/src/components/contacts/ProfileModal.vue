@@ -71,10 +71,23 @@
                 </v-col>
                 <v-col cols="12">
                   <div class="d-flex align-center justify-center">
-                    <v-btn text class="profile__btn-new">
+                    <v-btn
+                      text
+                      class="profile__btn-new"
+                      @click="dialogNewEmail = !dialogNewEmail"
+                    >
                       Cadastrar novo email
                     </v-btn>
                   </div>
+
+                  <newItem
+                    @close="newEmail($event)"
+                    :dialog="dialogNewEmail"
+                    title="Inserir email"
+                    type="email"
+                    label="email"
+                    color="primary"
+                  />
                 </v-col>
               </v-row>
 
@@ -93,10 +106,23 @@
                 </v-col>
                 <v-col cols="12">
                   <div class="d-flex align-center justify-center">
-                    <v-btn text class="profile__btn-new">
+                    <v-btn
+                      text
+                      class="profile__btn-new"
+                      @click="dialogNewPhone = !dialogNewPhone"
+                    >
                       Cadastrar novo telefone
                     </v-btn>
                   </div>
+
+                  <newItem
+                    @close="newPhone($event)"
+                    :dialog="dialogNewPhone"
+                    title="Inserir telefone"
+                    type="text"
+                    label="Telefone"
+                    color="primary"
+                  />
                 </v-col>
               </v-row>
 
@@ -116,10 +142,23 @@
                 </v-col>
                 <v-col cols="12">
                   <div class="d-flex align-center justify-center">
-                    <v-btn text class="profile__btn-new">
+                    <v-btn
+                      text
+                      class="profile__btn-new"
+                      @click="dialogNewCell = !dialogNewCell"
+                    >
                       Cadastrar novo celular
                     </v-btn>
                   </div>
+
+                  <newItem
+                    @close="newCell($event)"
+                    :dialog="dialogNewCell"
+                    title="Inserir celular"
+                    type="text"
+                    label="Celular"
+                    color="primary"
+                  />
                 </v-col>
               </v-row>
 
@@ -182,23 +221,69 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex';
 export default {
   components: {
     destroyConfirm: () => import('../dialogs/DialogConfirm'),
+    newItem: () => import('../dialogs/DialogNewItem'),
   },
   props: {
     dialog: { type: Boolean, required: true },
-    contact: { type: Object, required: true },
   },
 
   data: () => ({
     genderItems: ['Masculino', 'Feminino', 'Não Binário'],
     destroyDialog: false,
+    dialogNewEmail: false,
+    dialogNewPhone: false,
+    dialogNewCell: false,
   }),
 
+  computed: {
+    ...mapGetters({
+      contact: 'contacts/$currentContact',
+    }),
+  },
+
   methods: {
+    newEmail(event) {
+      this.dialogNewEmail = !this.dialogNewEmail;
+      if (event.confirm) {
+        this.contact.email.push(event.value);
+      }
+    },
+
+    newPhone(event) {
+      this.dialogNewPhone = !this.dialogNewPhone;
+      if (event.confirm) {
+        this.contact.phone.push(event.value);
+      }
+    },
+
+    newCell(event) {
+      this.dialogNewCell = !this.dialogNewCell;
+      if (event.confirm) {
+        this.contact.cell.push(event.value);
+      }
+    },
+
     save() {
-      this.$store.dispatch('contacts/updateContact', this.contact);
+      const emailFilter = this.contact.email.filter((item) => item != '');
+      const phoneFilter = this.contact.phone.filter((item) => item != '');
+      const cellFilter = this.contact.cell.filter((item) => item != '');
+
+      let params = {
+        gender: this.contact.gender,
+        name: this.contact.name,
+        age: this.contact.age,
+        email: emailFilter,
+        location: this.contact.location,
+        phone: phoneFilter,
+        cell: cellFilter,
+        id: this.contact.id,
+      };
+
+      this.$store.dispatch('contacts/updateContact', params);
       this.$emit('close');
     },
 

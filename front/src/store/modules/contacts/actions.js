@@ -1,4 +1,9 @@
-import { getContacts, putContact, destroyContact } from '@/services/contacts';
+import {
+  getContacts,
+  getContact,
+  putContact,
+  destroyContact,
+} from '@/services/contacts';
 
 export const actions = {
   async listContacts({ commit, dispatch }) {
@@ -13,6 +18,26 @@ export const actions = {
       dispatch(
         'notification/showNotification',
         { message: 'Falha ao carregar a lista de contatos', success: false },
+        { root: true }
+      );
+    } finally {
+      dispatch('loader/setLoader', false, { root: true });
+    }
+  },
+
+  async findContact({ commit, dispatch }, id) {
+    try {
+      dispatch('loader/setLoader', true, { root: true });
+      console.log(id)
+      const { data, status } = await getContact(id);
+
+      if (status === 200) {
+        commit('SET_CURRENT_CONTACT', data);
+      }
+    } catch (err) {
+      dispatch(
+        'notification/showNotification',
+        { message: 'Falha ao carregar os dados do contato', success: false },
         { root: true }
       );
     } finally {

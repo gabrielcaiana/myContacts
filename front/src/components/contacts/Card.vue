@@ -4,7 +4,7 @@
     <span class="card__email">{{ contact.email[0] }}</span>
     <v-btn class="card_button" outlined @click="showProfile">Visualizar perfil</v-btn>
 
-    <profileModal :dialog="openDialog" :contact="contact" @close="closeModal"  />
+    <profileModal :dialog="openDialog" @close="closeModal"  />
   </v-card>
 </template>
 
@@ -31,6 +31,7 @@ export default {
   methods: {
     showProfile() {
       this.openDialog = !this.openDialog;
+      this.$store.dispatch('contacts/findContact', this.contact.id)
     },
 
     closeModal() {
