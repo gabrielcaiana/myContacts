@@ -2,7 +2,7 @@
   <v-container>
     <v-row>
       <v-col cols="12">
-        <v-sheet rounded="lg">
+        <v-sheet rounded="lg" class="pb-8">
           <div class="content">
             <h1 class="content__title">Lista de contatos</h1>
             <p class="content__quantity">

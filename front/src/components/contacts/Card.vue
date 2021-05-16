@@ -46,13 +46,12 @@ export default {
   width: 100%;
   height: 100%;
   border: 1px solid $gray-100;
-  padding: 1rem;
+  padding: 2rem;
   box-sizing: border-box;
 
   &__name {
     color: $gray-800;
     font-size: 1rem;
-    margin: 0.85rem 0 0.1rem 0;
   }
 
   &__email {
