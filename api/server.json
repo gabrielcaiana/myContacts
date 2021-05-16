@@ -31,8 +31,7 @@
       },
       "age": 20,
       "email": [
-        "carlos@gmail.com",
-        ""
+        "carlos@gmail.com"
       ],
       "location": {
         "street": "3833 rua santa catarina ",
@@ -47,11 +46,6 @@
         "(54) 3190-3469",
         "(54) 2190-3469"
       ],
-      "picture": {
-        "large": "https://randomuser.me/api/portraits/men/17.jpg",
-        "medium": "https://randomuser.me/api/portraits/med/men/17.jpg",
-        "thumbnail": "https://randomuser.me/api/portraits/thumb/men/17.jpg"
-      },
       "id": 3
     }
   ]

@@ -28,7 +28,6 @@ export const actions = {
   async findContact({ commit, dispatch }, id) {
     try {
       dispatch('loader/setLoader', true, { root: true });
-      console.log(id)
       const { data, status } = await getContact(id);
 
       if (status === 200) {

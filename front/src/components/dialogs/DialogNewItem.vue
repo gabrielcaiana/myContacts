@@ -41,6 +41,14 @@ export default {
 
   data: () => ({
     value: '',
-  })
+  }),
+
+  watch: {
+    dialog: function(val) { 
+      if(!val) {
+        this.value = ''
+      }
+    }
+  }
 };
 </script>
