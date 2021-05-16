@@ -67,6 +67,8 @@
                     type="email"
                     required
                     v-model="contact.email[index]"
+                    prepend-icon="mdi-delete"
+                    @click:prepend="deleteItem(contact.email, index)"
                   ></v-text-field>
                 </v-col>
                 <v-col cols="12">
@@ -102,6 +104,8 @@
                     type="text"
                     required
                     v-model="contact.phone[index]"
+                    prepend-icon="mdi-delete"
+                    @click:prepend="deleteItem(contact.phone, index)"
                   ></v-text-field>
                 </v-col>
                 <v-col cols="12">
@@ -137,6 +141,8 @@
                     type="text"
                     required
                     v-model="contact.cell[index]"
+                    prepend-icon="mdi-delete"
+                    @click:prepend="deleteItem(contact.cell, index)"
                   >
                   </v-text-field>
                 </v-col>
@@ -267,8 +273,12 @@ export default {
       }
     },
 
+    deleteItem(item, index) {
+      item.splice(index, 1);
+    },
+
     findEnptyItems(item) {
-      return item.filter(item => item != '')
+      return item.filter((item) => item != '');
     },
 
     save() {
