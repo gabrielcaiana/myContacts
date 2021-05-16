@@ -267,10 +267,14 @@ export default {
       }
     },
 
+    findEnptyItems(item) {
+      return item.filter(item => item != '')
+    },
+
     save() {
-      const emailFilter = this.contact.email.filter((item) => item != '');
-      const phoneFilter = this.contact.phone.filter((item) => item != '');
-      const cellFilter = this.contact.cell.filter((item) => item != '');
+      const emailFilter = this.findEnptyItems(this.contact.email)
+      const phoneFilter = this.findEnptyItems(this.contact.phone)
+      const cellFilter = this.findEnptyItems(this.contact.cell)
 
       let params = {
         gender: this.contact.gender,
