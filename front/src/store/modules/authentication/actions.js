@@ -2,7 +2,7 @@ import { auth, userCollection } from '@/services/firebase';
 import router from '@/router';
 
 export const actions = {
-  async registerUser({dispatch }, form) {
+  async registerUser({ dispatch }, form) {
     try {
       dispatch('loader/setLoader', true, { root: true });
       const { user } = await auth.createUserWithEmailAndPassword(
@@ -20,50 +20,75 @@ export const actions = {
       });
 
       router.push('/home');
-      dispatch('notification/showNotification', {message: 'Cadastro efetuado com sucesso!'}, {root: true})
+      dispatch(
+        'notification/showNotification',
+        { message: 'Cadastro efetuado com sucesso!' },
+        { root: true }
+      );
     } catch (err) {
       console.log(err);
-      dispatch('notification/showNotification', {message: 'Falha ao realizar o cadastro.', success: false }, {root: true})
+      dispatch(
+        'notification/showNotification',
+        { message: 'Falha ao realizar o cadastro.', success: false },
+        { root: true }
+      );
     } finally {
       dispatch('loader/setLoader', false, { root: true });
     }
   },
 
-  async login({dispatch }, form) {
+  async login({ dispatch }, form) {
     try {
       dispatch('loader/setLoader', true, { root: true });
       const { user } = await auth.signInWithEmailAndPassword(
         form.email,
         form.password
       );
-      dispatch('user/setCurrentUser', user, {root: true})
+      debugger
+      dispatch('user/setCurrentUser', user, { root: true });
       router.push({ name: 'Home' });
 
-      dispatch('notification/showNotification', {message: 'Login efetuado com sucesso'}, {root: true})
+      dispatch(
+        'notification/showNotification',
+        { message: 'Login efetuado com sucesso' },
+        { root: true }
+      );
     } catch (err) {
       console.log(err);
-      dispatch('notification/showNotification', {message: 'Falha ao efetuar o login', success: false }, {root: true})
+      dispatch(
+        'notification/showNotification',
+        { message: 'Falha ao efetuar o login', success: false },
+        { root: true }
+      );
     } finally {
       dispatch('loader/setLoader', false, { root: true });
     }
   },
 
-  async resetPassword({dispatch}, email) {
+  async resetPassword({ dispatch }, email) {
     try {
       dispatch('loader/setLoader', true, { root: true });
       await auth.sendPasswordResetEmail(email);
-      dispatch('notification/showNotification', {message: 'E-mail enviado com sucesso!'}, {root: true})
+      dispatch(
+        'notification/showNotification',
+        { message: 'E-mail enviado com sucesso!' },
+        { root: true }
+      );
     } catch (err) {
       console.log(err);
-      dispatch('notification/showNotification', {message: 'Falha ao enviar o email.', success: false }, {root: true})
+      dispatch(
+        'notification/showNotification',
+        { message: 'Falha ao enviar o email.', success: false },
+        { root: true }
+      );
     } finally {
       dispatch('loader/setLoader', false, { root: true });
     }
   },
 
-  async logout({dispatch}) {
+  async logout({ dispatch }) {
     await auth.signOut();
-    dispatch('user/removeCurrentUser', {} , {root: true})
-    router.push('/')
-  }
+    dispatch('user/removeCurrentUser', {}, { root: true });
+    router.push('/');
+  },
 };

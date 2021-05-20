@@ -20,4 +20,8 @@ module.exports = {
         .end();
     });
   },
+
+  configureWebpack: {
+    devtool: 'source-map',
+  },
 };

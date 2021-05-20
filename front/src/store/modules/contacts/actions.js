@@ -11,7 +11,6 @@ export const actions = {
     try {
       dispatch('loader/setLoader', true, { root: true });
       const { data, status } = await getContacts();
-
       if (status == 200) {
         commit('SET_CONTACTS', data);
       }

@@ -51,6 +51,7 @@ export default {
   methods: {
     changeComponent(component) {
       this.currentComponent = component;
+      debugger
     },
 
     showResetPasswordModal(event) {
